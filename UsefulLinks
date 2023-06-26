@@ -1,2 +1,6 @@
 Virtual Environment Creation
 https://medium.com/wealthy-bytes/the-easiest-way-to-use-a-python-virtual-environment-with-git-401e07c39cde
+Steps:
+1. mkdir test-env && cd test-env
+2. python3 -m venv env
+3. env\Scripts\activate
