@@ -1,0 +1,5 @@
+# HSTS 1.0 Known Hosts database for GNU Wget.
+# Edit at your own risk.
+# <hostname>	<port>	<incl. subdomains>	<created>	<max-age>
+letterboxd.com	0	0	1597876848	31536000
+www.imdb.com	0	1	1597957193	47474747

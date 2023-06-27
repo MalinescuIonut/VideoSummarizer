@@ -1,0 +1,14 @@
+NAME=ElMelomano1903Melies
+EXTENS=mp4
+TRACKSUBT=0
+TRACKAUDIO=0
+SCENETHRESHOLD=0.3
+SUBTITLETHRESHOLD=0.5
+COPYRESOLUTION(-1 for none, 0 for original, other for new resolution)=0
+SAMPLINGRATE(seconds)=10
+REDUNDANCY=3
+SWDIRECTORY=C:\practica\summarizer\summarizer\SW\
+WORKINGDIR=C:\practica\summarizer\summarizer\
+FFMPEG=C:\practica\summarizer\summarizer\SW\ffmpeg.exe
+FFPROBE=C:\practica\summarizer\summarizer\SW\ffprobe.exe
+PERL=perl
