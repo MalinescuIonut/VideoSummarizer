@@ -1,0 +1,2 @@
+# VideoSummarizer
+see folders.txt
