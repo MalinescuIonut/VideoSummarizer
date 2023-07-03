@@ -19,29 +19,6 @@ def millisec(timeStr):
 def convert_to_wav(input_file, output_file):
     subprocess.run(['ffmpeg', '-i', input_file, '-acodec', 'pcm_s16le', '-ar', '44100', output_file])
 
-
-#######generate a wav file for each speaker###########
-#def generate_speaker_files(dz_file, audio_file):
-#    dz = open(dz_file).read().splitlines()
-#    speaker_files = {}  #dictionary to store speaker files
-
-#    for l in dz:
-#        #[ 00:00:01.172 -->  00:00:02.235] P SPEAKER_02 - a line from the txt file
-#        start, end, speaker = re.findall(r"(\d+:\d+:\d+\.\d+) --> (\d+:\d+:\d+\.\d+).*?(\w+)", l)[0]
-#        start_ms = millisec(start)
-#        end_ms = millisec(end)
-#        speaker = speaker.upper()
-#        speaker_label = "SPEAKER_" + speaker
-#
-#        if speaker_label not in speaker_files:
-#            speaker_files[speaker_label] = AudioSegment.silent()
-#
-#        speaker_files[speaker_label] += audio_file[start_ms:end_ms]
-#
-#    for speaker_label, audio_segment in speaker_files.items():
-#        output_file = f"dz_{speaker_label}.wav"
-#        audio_segment.export(output_file, format="wav")
-
 def DIARIZA(file_path, name):
     # Function to perform diarization on an audio file
     t1 = 0 * 1000  # Start time of audio segment in milliseconds (here, 0 seconds)
