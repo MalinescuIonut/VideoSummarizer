@@ -1,0 +1,14 @@
+Kingdom of Heaven - Movie Sequence
+Speaker 0 Total Speaking Percentage: 16.1831%	Speaker 0 Total Speaking Time: 25367(ms)	('noise', 0.0, 0.74)	('music', 0.74, 25.36)	
+Speaker 1 Total Speaking Percentage: 15.4533%	Speaker 1 Total Speaking Time: 24223(ms)	('male', 0.0, 7.92)	('noEnergy', 7.92, 8.540000000000001)	('male', 8.540000000000001, 24.2)	
+Speaker 2 Total Speaking Percentage: 18.3171%	Speaker 2 Total Speaking Time: 28712(ms)	('male', 0.0, 28.7)	
+Speaker 3 Total Speaking Percentage: 11.1069%	Speaker 3 Total Speaking Time: 17410(ms)	('male', 0.0, 17.400000000000002)	
+Speaker 4 Total Speaking Percentage: 13.3850%	Speaker 4 Total Speaking Time: 20981(ms)	('male', 0.0, 20.96)	
+Speaker 5 Total Speaking Percentage: 11.7295%	Speaker 5 Total Speaking Time: 18386(ms)	('male', 0.0, 18.38)	
+Speaker 6 Total Speaking Percentage: 13.8628%	Speaker 6 Total Speaking Time: 21730(ms)	('male', 0.0, 1.94)	('music', 1.94, 5.36)	('male', 5.36, 21.72)	
+Total Speaking Percentage: 36.90988%	Total Speaking Duration: 156750(ms)	Total Duration of the Sample: 424683(ms)
+Male Speaking Duration: 127.320(s)	Percentage: 81.22488%
+Female Speaking Duration: 0.000(s)	Percentage: 0.00000%
+Noise Duration: 0.740(s)		Percentage: 0.47209%
+Music Duration: 28.040(s)		Percentage: 17.88836%
+NoEnergy Duration: 0.620(s)		Percentage: 0.39553%
