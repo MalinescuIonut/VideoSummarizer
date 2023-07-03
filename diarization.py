@@ -4,6 +4,10 @@ from pyannote.audio import Pipeline  # Import the Pipeline class from pyannote.a
 import subprocess
 import os
 import shutil
+from inaSpeechSegmenter import Segmenter
+from inaSpeechSegmenter.export_funcs import seg2csv
+import pandas as pd
+import seaborn as sns
 
 def millisec(timeStr):
     # Function to convert time string in format "HH:MM:SS.sss" to milliseconds
@@ -107,12 +111,12 @@ def separate_diarization(file_path):
                 if speaker_nr > max_speaker:
                     max_speaker = speaker_nr
     nr_of_speakers = int(max_speaker)
-    print(nr_of_speakers)
+    print("there are: ", nr_of_speakers + 1, " speakers")
 
     origin_path = os.path.dirname(file_path)
     # print(origin_path)
 
-    for speaker_index in range(1, nr_of_speakers + 1):
+    for speaker_index in range(0, nr_of_speakers + 1):
 
         # step1: make folders for each speaker
         folder_name = f"SPEAKER_{speaker_index:02}"  # Format folder name with leading zeros
@@ -126,7 +130,7 @@ def separate_diarization(file_path):
         shutil.copyfile("diarizationoutput.txt", current_path)
 
     # step3: eliminate all lines that don't contain information about current speaker
-    for speaker_index in range(1, nr_of_speakers + 1):
+    for speaker_index in range(0, nr_of_speakers + 1):
         folder_name = f"SPEAKER_{speaker_index:02}"
         new_path = os.path.join(origin_path, folder_name)
         os.chdir(new_path)
@@ -148,7 +152,7 @@ def separate_diarization(file_path):
     spacermilli = 10
     spacer = AudioSegment.silent(duration=spacermilli)
 
-    for speaker_index in range(1, nr_of_speakers + 1):
+    for speaker_index in range(0, nr_of_speakers + 1):
         folder_name = f"SPEAKER_{speaker_index:02}"
         new_path = os.path.join(origin_path, folder_name)
         os.chdir(new_path)
@@ -174,9 +178,10 @@ def separate_diarization(file_path):
         current_path = os.path.join(new_path, f"SPEAKER_audio_{speaker_index:02}.wav")
         shutil.move(f"SPEAKER_audio_{speaker_index:02}.wav", current_path)
 
+
     return
 
-file_path = input("Enter the file path of the MKV file: ")
+file_path = input("Enter the file path of the MKV file (include file name + extension): ")
 name = "output"  # Prompt the user to enter the name for the diarized output
 
 DIARIZA(file_path, name)  # Call the DIARIZA function with the provided file path and name
