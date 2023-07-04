@@ -1,0 +1,4 @@
+PATH=C:\UPM_project\summarizer\SpeedUp\cut.mkv
+OPTION=length
+SPEED=0.8
+LENGTH=3
