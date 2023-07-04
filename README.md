@@ -15,6 +15,7 @@ Inside the "Image_Detection" folder a file containing all the objects and their 
 !Important: Some of the objects detected may be false detections, considering the framerate of a movie to be 24 fps, 
 
 objects that appear under a threshold, let's say 24 times, are likely to be erroneous, as their nr. of appearances is too 
-small to be considerd relevant.
+
+small to be considered even relevant.
 
 https://github.com/ultralytics/yolov5
