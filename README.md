@@ -1,6 +1,4 @@
-# VideoSummarizer
-
-Object Detection using YOLOv5 AI.
+# Object Detection using YOLOv5 AI.
 
 yolov5.rar must be unarchived and placed inside a folder called "Image_Detection".
 
