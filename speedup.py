@@ -1,8 +1,14 @@
 import re
 import subprocess
 import os
+
+import librosa
+import numpy as np
+import soundfile as sf
 from pydub import AudioSegment
-import moviepy.editor as mpe
+from pydub.playback import play
+import ffmpy
+
 
 def name(file_path):
     # substract file_name from file_path:
@@ -32,29 +38,23 @@ def speed(file_path, speed_factor):
     new_duration = old_duration * speed_f
     subprocess.run(['ffmpeg', '-y', '-i', 'temp.mp4', '-to', str(new_duration), '-c', 'copy', 'final.mp4'])
 
-    os.remove('copy.mp4')
-    os.remove('temp.mp4')
-
     # 2. Audio part
     audio = AudioSegment.from_file("audio.mp3")
-    audio_altered_framerate = audio._spawn(audio.raw_data, overrides={
-        "frame_rate": int(audio.frame_rate * (1 / speed_f))
-    })
-    audio = audio_altered_framerate.set_frame_rate(audio.frame_rate)
-    audio.export("final.mp3", format="mp3")
+    subprocess.run(['ffmpeg', '-i', 'audio.mp3', '-af', f'atempo={1/speed_f}', 'final.mp3'])
 
     #3. Combine audio & video
-    subprocess.run(['ffmpeg', '-i', 'final.mp4', '-i', 'final.mp3','-c:v', 'copy', '-c:a', 'aac', 'finalRESULT.mkv'])
+    subprocess.run(['ffmpeg', '-i', 'final.mp4', '-i', 'final.mp3', '-c:v', 'copy', '-c:a', 'aac', 'finalRESULT.mkv'])
+
+    os.remove('copy.mp4')
+    os.remove('temp.mp4')
+    os.remove('audio.mp3')
+    os.remove('video.mp4')
+    os.remove('final.mp4')
+    os.remove('final.mp3')
 
     return
 
-    #alternative function with moviepy in case ffmpeg cannot be used
-#def combine_audiovideo(video, audio, output_name, fps=60):
-#    final_video = mpe.VideoFileClip(video)
-#    final_audio = mpe.AudioFileClip(audio)
-#    final_result = final_video.set_audio(final_audio)
-#    final_result.write_videofile(output_name, fps=fps)
-#    return
+
 
 #configuration file usage
 with open("configurationSpeed.txt", 'r', encoding='utf8', newline='\r\n') as input:
