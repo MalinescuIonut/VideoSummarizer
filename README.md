@@ -19,3 +19,10 @@ objects that appear under a threshold, let's say 24 times, are likely to be erro
 small to be considered even relevant.
 
 https://github.com/ultralytics/yolov5
+
+# 1st Update
+The main program has been optimized :
+ - no more hard-coded paths
+ - the numbering function had some issues detecting objects composed of multiple words, an issue which has been solved
+ - a configuration file can be now found in the folder containing the main program which can be used to change the threshold value and that can provide further uses down the line
+ - started work on the DER computation, by first creating an automatic srt type file generator that should create subtitles with the help of the image detection done by YOLO
