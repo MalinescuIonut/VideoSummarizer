@@ -1,0 +1,5 @@
+-> all the files (2 .txt, 2 .py) must be in the same folder
+-> use the configuration files (.txt) to setup the program with your preferences (they are filled in already for ex.)
+-> in the same folder you must place the .mkv/mp4/apk file to be altered
+-> the final result will be called "merged_video.mp4" - always in .mp4 format
+-> the process might take some time and requires good CPU performance
