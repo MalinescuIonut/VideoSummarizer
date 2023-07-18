@@ -32,5 +32,9 @@ The main program has been optimized :
 
 - implemented the sliding window, median filter
 - implemented a conversion function to an .srt type file
-- work still has to be done on implementing the dynamic subtitle length allocation (information regarding each word + occurence + time stamps has been already prepared)
+- work still has to be done on implementing the dynamic subtitle length allocation (information regarding each word + occurrence + time stamps has been already prepared)
 
+# 3rd Update
+
+- a final .srt file is created, in which every object appearing in the frame is ordered on a per-second basis
+- final results are to be improved by using scene change information 
