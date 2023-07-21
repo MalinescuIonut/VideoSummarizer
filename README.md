@@ -37,4 +37,10 @@ The main program has been optimized :
 # 3rd Update
 
 - a final .srt file is created, in which every object appearing in the frame is ordered on a per-second basis
-- final results are to be improved by using scene change information 
+- final results are to be improved by using scene change information
+
+# 4th Update
+- two .srt type files are now generated
+  - a per second analysis of the detected objects is done and stored in the file "Subtitle_Second.srt"
+  - the second file, "Subtitle_Scene.srt", contains objects present during one scene, whenever a scene change is detected another subtitle is generated
+ - the sliding window filter is now more dynamic, it resets when a scene change is detected and restarted after the scene change; its results should resemble more accurate results
