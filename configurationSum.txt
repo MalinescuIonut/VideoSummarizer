@@ -1,3 +1,0 @@
-origin_path=C:\UPM_project\summarizer\SpeedUp
-file_name=cut.mkv
-process_speed=fast

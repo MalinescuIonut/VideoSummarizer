@@ -1,0 +1,5 @@
+root_path=C:\UPM_project\summarizer\SpeedUp
+current_path=C:\UPM_project\summarizer\SpeedUp\test
+movie_name=longtest.mp4
+voice_speed=0.7
+else_speed=0.3
