@@ -1,0 +1,4 @@
+PATH=C:\UPM_project\summarizer\push\42else.mp4
+OPTION=speed
+SPEED=0.3
+LENGTH=3
