@@ -82,7 +82,7 @@ def fill_srt(file_name):
                     # special case for first subtitle
                     if current_start == [0, 0, 0]:
                         if current_end[0] <= last_end[0] and current_end[1] <= last_end[1] and current_end[2] <= last_end[2]:
-                            print("STOP")
+                            print("end time < start time -> this output was eliminated and replaced")
                     else:
                         seconds1 = "{:06.3f}".format(last_end[2]).replace('.', ',')
                         seconds2 = "{:06.3f}".format(current_end[2]).replace('.', ',')
@@ -122,9 +122,10 @@ def compress_srt(file_name):
             if sub.text == current_text:
                 current_end = sub.end
             else:
-                output_file.write(f"{current_index}\n")
-                output_file.write(f"{current_start} --> {current_end}\n")
-                output_file.write(f"{current_text}\n\n")
+                if current_end != 0:
+                    output_file.write(f"{current_index}\n")
+                    output_file.write(f"{current_start} --> {current_end}\n")
+                    output_file.write(f"{current_text}\n\n")
                 current_start = sub.start
                 current_end = sub.end
                 current_text = sub.text
@@ -140,13 +141,13 @@ def compress_srt(file_name):
 
 def determine_index(srt_file):
     subs = pysrt.open(srt_file)
+    index = 0
     for sub in subs:
         content = str(sub)
         content = content.splitlines()
         index = content[0]
 
     return index
-
 
 def fragmentation(folder_path, movie_name, reference):
     # inputs: file containing the desired timestamps of the fragments, srt format
@@ -310,5 +311,8 @@ print(index)
 #cut the movie into fragments following the timemap provided in the reference srt file "srt_file"
 fragmentation(current_path, movie_name, srt_file)
 
+#speed-up the movie fragments with different rates - one for voice content, and a different rate for noise/music/silence
 selective_acc(root_path, current_path, index, voice_speed, else_speed)
+
+#merge the accelerated fragments to obtain a final result in mp4 format
 movie_maker(index, current_path)
