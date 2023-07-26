@@ -1,3 +1,7 @@
+# Code Usage
+The files listed here must be placed inside a folder named "Face_Detection" inside the "summarizer" folder.
+
+
 # Libraries
 python3 -m pip install opencv-python
 python3 -m pip install face_recognition
