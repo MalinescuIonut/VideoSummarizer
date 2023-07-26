@@ -12,7 +12,7 @@ import shutil
 def process_video():
     try:
         # Create a folder to save the detected faces if it doesn't exist
-        output_folder = "face_i"
+        output_folder = "face_images"
         if not os.path.exists(output_folder):
             os.makedirs(output_folder)
 
