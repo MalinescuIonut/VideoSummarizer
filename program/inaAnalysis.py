@@ -6,9 +6,9 @@ from inaSpeechSegmenter import Segmenter
 import pysrt
 
 
-def extract_statistics(origin_path, file_name):
-    os.chdir(origin_path)
-    input_path = os.path.join(origin_path, file_name)
+def extract_statistics(movie_path, file_name):
+    os.chdir(movie_path)
+    input_path = os.path.join(movie_path, file_name)
     seg = Segmenter()
     total_segmentation = seg(input_path)
 
@@ -48,7 +48,8 @@ with open("configfile.txt", 'r', encoding='utf8', newline='\r\n') as input:
     lines = input.read().splitlines()
     for line in lines:
         data.append(line.split("=")[1])
-    file_path = data[1]
-    file_name = data[2]
+    movie_path = data[0]
+    program_path = data[1]
+    movie_name = data[2]
 
-extract_statistics(file_path, file_name)
+extract_statistics(movie_path, movie_name)

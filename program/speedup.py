@@ -43,7 +43,7 @@ def speed(file_path, speed_factor):
     subprocess.run(['ffmpeg', '-i', 'audio.mp3', '-af', f'atempo={1/speed_f}', 'final.mp3'])
 
     #3. Combine audio & video
-    subprocess.run(['ffmpeg', '-i', 'final.mp4', '-i', 'final.mp3', '-c:v', 'copy', '-c:a', 'aac', 'finalRESULT.mkv'])
+    subprocess.run(['ffmpeg', '-i', 'final.mp4', '-i', 'final.mp3', '-c:v', 'copy', '-c:a', 'aac', '-async', '1', 'finalRESULT.mkv'])
 
     os.remove('copy.mp4')
     os.remove('audio.mp3')
@@ -73,10 +73,10 @@ if choice == "speed":
     speed(file_path, speed_factor)
 
 elif choice == "length":
-    if float(length) == 0.0:
+    if float(length) == 0.0:    #input expressed in minutes
         print("Invalid length!")
     length = float(length)
-    length = length*60 + 1
+    length = length*60 + 1  #convert to seconds + 1s
     old_duration = subprocess.run(
         ['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1',
          name(file_path)], capture_output=True, text=True)

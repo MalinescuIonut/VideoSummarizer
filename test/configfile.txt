@@ -1,5 +1,0 @@
-root_path=C:\UPM_project\summarizer\push
-current_path=C:\UPM_project\summarizer\push\test
-movie_name=proba.mkv
-voice_speed=0.7
-else_speed=0.3
