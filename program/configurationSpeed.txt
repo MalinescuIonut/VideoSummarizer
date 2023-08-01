@@ -1,4 +1,0 @@
-PATH=C:\UPM_project\summarizer\SpeedUp\SpeedupSummarizer_V4\program\SummarizedMovie.mp4
-OPTION=length
-SPEED=1
-LENGTH=2.0
