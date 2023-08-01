@@ -1,0 +1,1 @@
+This program is just a draft, so currently it's not an addition to the main program. In order to run it, add Newsubs.py to the 'program' folder containing all the other .py files and the config files and run it from the cmd prompt.
