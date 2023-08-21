@@ -1,0 +1,5 @@
+input_path=C:\UPM_project\summarizer\SpeedUp\SpeedupSummarizer_V4\input
+main_path=C:\UPM_project\summarizer\SpeedUp\SpeedupSummarizer_V4\program
+movie_name=proba.mkv
+voice_speed=0.7
+else_speed=0.4
