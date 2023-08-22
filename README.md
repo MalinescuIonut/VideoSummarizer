@@ -15,7 +15,7 @@ conda activate yolov4-gpu
 pip install scipy
 pip install easydict
 
-# Convert darknet weights to tensorflow model
+**Convert darknet weights to tensorflow model**
 python save_model.py --model yolov4
 
 **Replace the object_tracker.py with the one that I provide in this branch**
