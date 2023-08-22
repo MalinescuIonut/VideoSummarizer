@@ -1,6 +1,7 @@
 **I. Download the Git Repo**
 
 cd ~desired path~ (I created a new folder called Objecttracking inside the Summarization Folder)
+
 git clone https://github.com/theAIGuysCode/yolov4-deepsort.git
 
 **II. Download the Yolov4 weights and place them inside the "data" folder of the downloaded git repo**
@@ -8,11 +9,13 @@ git clone https://github.com/theAIGuysCode/yolov4-deepsort.git
 https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights
 
 conda env create -f conda-gpu.yml
+
 conda activate yolov4-gpu
 
 **!!Cuda is required in order to run the script, as the GPU is used instead of the CPU, otherwise:**
 
 pip install scipy
+
 pip install easydict
 
 **Convert darknet weights to tensorflow model**
