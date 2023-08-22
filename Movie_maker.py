@@ -27,12 +27,19 @@ def movie_maker(index, current_path):
         for video in video_list:
             temp_file = os.path.join(current_path,
                                      f"temp{video[:-4]}.ts")  # [:-4] - to remove the last four characters from "video"
-            subprocess.run(
-                ['ffmpeg', '-y', '-i', video, '-c', 'copy', '-bsf:v', 'h264_mp4toannexb', '-f', 'mpegts', temp_file])
+            terminalText = subprocess.run(
+                ['ffmpeg', '-y', '-i', video, '-c', 'copy', '-bsf:v',
+                 'h264_mp4toannexb', '-f', 'mpegts', temp_file], capture_output=True, text=True)
+
             # -bsf:v h264_mp4toannexb -> converts the video stream to the Annex B byte stream format required for MPEG-TS containers
             # -f mpegts -> set the output format to MPEG-TS (Transport Stream) = a container format used for streaming media
-            temp_file_list.append(temp_file)
-            output.write(f"file '{temp_file}'\n")
+
+            if not os.path.isfile(temp_file):
+                print("error executing " + str(['ffmpeg', '-i', video, '-c', 'copy', '-bsf:v', 'h264_mp4toannexb', '-f', 'mpegts', temp_file]))
+                print(terminalText.stderr)
+            else:
+                temp_file_list.append(temp_file)
+                output.write(f"file '{temp_file}'\n")
 
     output_file = os.path.join(current_path, 'merged_video.mp4')
     subprocess.run(['ffmpeg', '-y', '-f', 'concat', '-safe', '0', '-i', concat_txt, '-c:a', 'copy', '-bsf:a',

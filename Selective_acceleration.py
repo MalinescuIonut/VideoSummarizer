@@ -53,12 +53,18 @@ def speedup_file(speedup_path, current_path, file_name, speed_rate, output_name)
     subprocess.run(["python", "speedup.py"])
 
     try:
-        os.rename('finalRESULT.mkv', output_name)
-        shutil.move(os.path.join(speedup_path, output_name), os.path.join(current_path, output_name))
+        if os.path.exists(os.path.join(speedup_path, 'finalRESULT.mkv')):
+            os.rename('finalRESULT.mkv', output_name)
+            shutil.move(os.path.join(speedup_path, output_name), os.path.join(current_path, output_name))
+        else:
+            print(f"File not found: finalRESULT.mkv")
+            shutil.copy(os.path.join(speedup_path, file_name), os.path.join(current_path, output_name))
     except FileNotFoundError:
-        print(f"File not found")
+        print(f"File not found: finalRESULT.mkv")
+        shutil.copy(os.path.join(speedup_path, file_name), os.path.join(current_path, output_name))
     except Exception as e:
-        print("Error reading file")
+        print(f"Error reading file: finalRESULT.mkv")
+        shutil.copy(os.path.join(speedup_path, file_name), os.path.join(current_path, output_name))
 
     try:
         if os.path.exists(os.path.join(speedup_path, file_name)):
