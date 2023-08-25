@@ -216,7 +216,7 @@ def predict_gender(input_path: str):
                 total_male_percentage = sum(male_matches)
                 total_female_percentage = sum(female_matches)
 
-            file.write("Cluster-" + str(nr+1))
+            file.write("Cluster-" + str(cluster))
 
             if total_male_percentage == 0 and total_female_percentage == 0:
                 file.write(" Gender couldn't be predicted!\n")
