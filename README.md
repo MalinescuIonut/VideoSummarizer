@@ -11,6 +11,9 @@ res10_300x300_ssd_iter_140000_fp16.caffemodel: https://raw.githubusercontent.com
 deploy.prototxt.txt: https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt
 
 All these files must be added to a "weights" folder inside the folder containing the script.
+
 I also placed the script inside the folder containing all the clusters.
 
 An output file will be created in the same directory containing the gender info about each cluster.
+
+I will also add an example of an output file after running the program on the clusters created for the movie "Bacalaureat"
