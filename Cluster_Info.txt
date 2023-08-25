@@ -1,41 +1,39 @@
-Cluster-1: Male 97.46% with 18 matches out of: 19 pictures.
-Cluster-2: Female 87.27% with 9 matches out of: 17 pictures.
-Cluster-3: Female 95.39% with 60 matches out of: 64 pictures.
-Cluster-4: Male 82.72% with 5 matches out of: 5 pictures.
-Cluster-5: Female 83.6% with 27 matches out of: 35 pictures.
-Cluster-6: Male 93.03% with 180 matches out of: 208 pictures.
-Cluster-7: Male 95.64% with 158 matches out of: 199 pictures.
-Cluster-8: Male 81.14% with 7 matches out of: 7 pictures.
-Cluster-9: Male 97.72% with 16 matches out of: 18 pictures.
-Cluster-10: Female 90.41% with 52 matches out of: 70 pictures.
-Cluster-11: Male 95.16% with 57 matches out of: 61 pictures.
-Cluster-12: Female 96.98% with 4 matches out of: 5 pictures.
-Cluster-13 Gender couldn't be predicted!
-Cluster-14: Female 77.88% with 7 matches out of: 9 pictures.
-Cluster-15: Male 93.94% with 5 matches out of: 5 pictures.
-Cluster-16: Male 99.14% with 11 matches out of: 13 pictures.
-Cluster-17: Male 96.07% with 6 matches out of: 12 pictures.
-Cluster-18: Male 99.99% with 12 matches out of: 12 pictures.
-Cluster-19: Male 99.97% with 12 matches out of: 12 pictures.
-Cluster-20: Female 84.96% with 10 matches out of: 12 pictures.
-Cluster-21: Male 99.97% with 12 matches out of: 12 pictures.
-Cluster-22: Male 99.94% with 12 matches out of: 12 pictures.
-Cluster-23: Male 86.58% with 63 matches out of: 107 pictures.
-Cluster-24: Male 99.98% with 11 matches out of: 11 pictures.
-Cluster-25: Male 99.98% with 12 matches out of: 12 pictures.
-Cluster-26: Female 93.02% with 11 matches out of: 11 pictures.
-Cluster-27: Female 94.04% with 8 matches out of: 12 pictures.
-Cluster-28: Male 99.71% with 12 matches out of: 12 pictures.
-Cluster-29: Male 88.95% with 7 matches out of: 7 pictures.
-Cluster-30: Female 97.9% with 8 matches out of: 11 pictures.
-Cluster-31: Female 98.57% with 7 matches out of: 7 pictures.
-Cluster-32: Male 99.83% with 6 matches out of: 6 pictures.
-Cluster-33: Female 91.68% with 8 matches out of: 8 pictures.
-Cluster-34: Male 85.7% with 228 matches out of: 347 pictures.
-Cluster-35: Male 93.76% with 94 matches out of: 102 pictures.
-Cluster-36: Female 90.8% with 4 matches out of: 6 pictures.
-Cluster-37: Male 84.5% with 48 matches out of: 90 pictures.
-Cluster-38: Male 99.55% with 5 matches out of: 5 pictures.
-Cluster-39: Male 78.88% with 4 matches out of: 5 pictures.
-Cluster-40: Male 78.88% with 4 matches out of: 0 pictures.
-Cluster-41: Male 78.88% with 4 matches out of: 0 pictures.
+cluster_1: Male 97.46% with 18 matches out of: 19 pictures.Dimension: 230.21x230.53 Size: 57.33 Male
+cluster_10: Female 87.27% with 9 matches out of: 17 pictures.Dimension: 165.71x165.71 Size: 31.79 Female
+cluster_11: Female 95.39% with 60 matches out of: 64 pictures.Dimension: 67.66x67.84 Size: 6.84 Female
+cluster_12: Male 82.72% with 5 matches out of: 5 pictures.Dimension: 154.8x154.8 Size: 25.37 Male
+cluster_13: Female 83.6% with 27 matches out of: 35 pictures.Dimension: 131.97x132.0 Size: 23.42 Female
+cluster_14: Male 93.03% with 180 matches out of: 208 pictures.Dimension: 92.73x92.74 Size: 13.62 Male
+cluster_15: Male 95.64% with 158 matches out of: 199 pictures.Dimension: 100.23x100.24 Size: 14.15 Male
+cluster_16: Male 81.14% with 7 matches out of: 7 pictures.Dimension: 107.14x108.0 Size: 15.37 Female
+cluster_17: Male 97.72% with 16 matches out of: 18 pictures.Dimension: 75.22x75.17 Size: 9.07 Male
+cluster_18: Female 90.41% with 52 matches out of: 70 pictures.Dimension: 74.44x74.69 Size: 8.56 Male
+cluster_19: Male 95.16% with 57 matches out of: 61 pictures.Dimension: 76.98x77.46 Size: 9.29 Male
+cluster_2: Female 96.98% with 4 matches out of: 5 pictures.Dimension: 196.2x196.4 Size: 44.84 Female
+cluster_20 Gender couldn't be predicted! Blurry(Male)
+cluster_21: Female 77.88% with 7 matches out of: 9 pictures.Dimension: 108.0x108.0 Size: 14.95 Female
+cluster_22: Male 93.94% with 5 matches out of: 5 pictures.Dimension: 129.0x129.0 Size: 19.17 Male
+cluster_23: Male 99.14% with 11 matches out of: 13 pictures.Dimension: 74.77x75.0 Size: 9.32 Female
+cluster_24: Male 96.07% with 6 matches out of: 12 pictures.Dimension: 62.92x62.0 Size: 6.91 Female
+cluster_25: Male 99.99% with 12 matches out of: 12 pictures.Dimension: 74.67x74.42 Size: 9.08 Male
+cluster_26: Male 99.97% with 12 matches out of: 12 pictures.Dimension: 78.67x78.67 Size: 10.08 Male
+cluster_27: Female 84.96% with 10 matches out of: 12 pictures.Dimension: 77.33x77.17 Size: 10.08 Female
+cluster_28: Male 99.97% with 12 matches out of: 12 pictures.Dimension: 74.67x74.33 Size: 9.06 Male
+cluster_29: Male 99.94% with 12 matches out of: 12 pictures.Dimension: 75.58x75.92 Size: 9.06 Male
+cluster_3: Male 86.58% with 63 matches out of: 107 pictures.Dimension: 112.51x112.59 Size: 17.9 Female
+cluster_30: Male 99.98% with 11 matches out of: 11 pictures.Dimension: 62.45x62.27 Size: 6.55 Male
+cluster_31: Male 99.98% with 12 matches out of: 12 pictures.Dimension: 61.67x61.83 Size: 6.71 Male
+cluster_32: Female 93.02% with 11 matches out of: 11 pictures.Dimension: 74.73x75.0 Size: 8.78 Female
+cluster_33: Female 94.04% with 8 matches out of: 12 pictures.Dimension: 85.67x86.08 Size: 12.34 Female
+cluster_34: Male 99.71% with 12 matches out of: 12 pictures.Dimension: 62.0x62.0 Size: 6.73 Male
+cluster_35: Male 88.95% with 7 matches out of: 7 pictures.Dimension: 62.0x62.0 Size: 6.32 Male
+cluster_36: Female 97.9% with 8 matches out of: 11 pictures.Dimension: 80.45x80.45 Size: 10.73 Female
+cluster_37: Female 98.57% with 7 matches out of: 7 pictures.Dimension: 67.86x68.0 Size: 8.04 Female
+cluster_38: Male 99.83% with 6 matches out of: 6 pictures.Dimension: 62.33x62.83 Size: 6.82 Male
+cluster_39: Female 91.68% with 8 matches out of: 8 pictures.Dimension: 36.0x36.0 Size: 2.16 Male
+cluster_4: Male 85.7% with 228 matches out of: 347 pictures.Dimension: 101.08x100.78 Size: 15.13 Male
+cluster_5: Male 93.76% with 94 matches out of: 102 pictures.Dimension: 114.65x114.62 Size: 16.95 Male
+cluster_6: Female 90.8% with 4 matches out of: 6 pictures.Dimension: 150.67x150.17 Size: 30.97 Female
+cluster_7: Male 84.5% with 48 matches out of: 90 pictures.Dimension: 125.27x125.27 Size: 22.87 Female
+cluster_8: Male 99.55% with 5 matches out of: 5 pictures.Dimension: 155.0x155.0 Size: 27.94 Male
+cluster_9: Male 78.88% with 4 matches out of: 5 pictures.Dimension: 155.0x155.0 Size: 29.48 Male

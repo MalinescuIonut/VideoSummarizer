@@ -134,8 +134,10 @@ def find_matching_strings(input_list):
     return male_matches, female_matches
 
 def get_clusters(base_folder):
+    import re
     folder_names = [f for f in os.listdir(base_folder) if os.path.isdir(os.path.join(base_folder, f))]
-    return folder_names
+    cluster_folders = [f for f in folder_names if re.match(r'cluster_\d+', f)]
+    return cluster_folders
 
 
 def predict_gender(input_path: str):
@@ -155,7 +157,7 @@ def predict_gender(input_path: str):
             gender_confidence_list = []
 
 
-            for file_path in image_file_paths:
+            for l, file_path in enumerate(image_file_paths):
                 """Predict the gender of the faces showing in the image"""
                 # Read Input Image
                 img = cv2.imread(file_path)
@@ -216,7 +218,28 @@ def predict_gender(input_path: str):
                 total_male_percentage = sum(male_matches)
                 total_female_percentage = sum(female_matches)
 
-            file.write("Cluster-" + str(cluster))
+            total_width = 0
+            total_height = 0
+            total_size = 0
+            counter = 0
+
+            for img_path in image_file_paths:
+                print(img_path)
+                img = cv2.imread(img_path)
+                height, width, _ = img.shape
+                size_kb = os.path.getsize(img_path) / 1024  # Convert to KB
+                total_size += size_kb
+                total_width += width
+                total_height += height
+                counter += 1
+
+            num_images = counter
+            avg_width = total_width / num_images
+            avg_height = total_height / num_images
+            avg_size_kb = total_size / num_images
+
+
+            file.write(str(cluster))
 
             if total_male_percentage == 0 and total_female_percentage == 0:
                 file.write(" Gender couldn't be predicted!\n")
@@ -225,12 +248,18 @@ def predict_gender(input_path: str):
                     if len(male_matches) > 0:
                         file.write(": Male " + str(round(total_male_percentage / len(male_matches), 2)) +"%")
                     file.write(
-                        " with " + str(len(male_matches)) + " matches out of: " + str(len(gender_confidence_list)) + " pictures.\n")
+                        " with " + str(len(male_matches)) + " matches out of: " + str(len(gender_confidence_list)) + " pictures.")
+
                 else:
                     if len(female_matches) > 0:
                         file.write(": Female " + str(round(total_female_percentage / len(female_matches), 2)) +"%")
                     file.write(" with " + str(len(female_matches)) + " matches out of: " + str(
-                        len(gender_confidence_list)) + " pictures.\n")
+                        len(gender_confidence_list)) + " pictures.")
+
+                file.write("Dimension: " + str(round(avg_width, 2)) + "x" + str(round(avg_height, 2)) + " Size: " + str(
+                    round(avg_size_kb, 2)) + "\n")
+
+
 
             # print(str(gender_confidence_list) +'\n')
             # print(str(total_male_percentage) +"\n")
