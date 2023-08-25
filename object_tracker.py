@@ -220,13 +220,22 @@ def main(_argv):
                     continue
                 bbox = track.to_tlbr()
                 class_name = track.get_class()
-
-            # draw bbox on screen
+                bbox[0] = max(1, bbox[0])
+                bbox[1] = max(1, bbox[1])
+                bbox[2] = min(frame_size[1] - 1, bbox[2])
+                bbox[3] = min(frame_size[0] - 1, bbox[3])
+                bb1_30 = max(1, bbox[1] - 30)
+                bb1_10 = max(1, bbox[1] - 10)
+                bb0_name = min(frame_size[1] - 1, int(bbox[0]) + (len(class_name) + len(str(track.track_id))) * 17)
+                # draw bbox on screen
                 color = colors[int(track.track_id) % len(colors)]
                 color = [i * 255 for i in color]
-                cv2.rectangle(frame, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), color, 2)
-                cv2.rectangle(frame, (int(bbox[0]), int(bbox[1]-30)), (int(bbox[0])+(len(class_name)+len(str(track.track_id)))*17, int(bbox[1])), color, -1)
-                cv2.putText(frame, class_name + "-" + str(track.track_id),(int(bbox[0]), int(bbox[1]-10)),0, 0.75, (255,255,255),2)
+                cv2.rectangle(frame, (int(bbox[0]), int(bbox[1])),
+                              (int(bbox[2]), int(bbox[3])), color, 2)
+                cv2.rectangle(frame, (int(bbox[0]), int(bb1_30)),
+                              (bb0_name, int(bbox[1])), color, -1)
+                cv2.putText(frame, class_name + "-" +
+                            str(track.track_id), (int(bbox[0]), int(bb1_10)), 0, 0.75, (255, 255, 255), 2)
 
             # if enable info flag then print details about each track
                 file.write("Tracker ID: {}, Class: {},  BBox Coords (xmin, ymin, xmax, ymax): {}".format(str(track.track_id),class_name, (int(bbox[0]), int(bbox[1]), int(bbox[2]), int(bbox[3]))))
