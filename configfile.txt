@@ -1,0 +1,6 @@
+input_path=C:\UPM_project\summarizer\SpeedUp\videosum_stabil\input
+main_path=C:\UPM_project\summarizer\SpeedUp\videosum_stabil\program
+movie_name=proba.mkv
+voice_speed=0.7
+else_speed=0.4
+ffmpeg_path=C:\ffmpeg\bin\ffmpeg.exe
