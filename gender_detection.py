@@ -4,6 +4,16 @@ import numpy as np
 import face_recognition
 import os
 
+import os
+from typing import Union
+
+import cv2
+
+from hat_beard_classifier import HatBeardClassifier, SimpleFaceDetector, draw_results, get_coordinates
+from config import (
+    INPUT_SHAPE, CLASSIFIER_MODEL_PATH, CASCADE_FILE_PATH, SCALE_FACTOR, MIN_NEIGHBOURS, COORDINATES_EXTEND_VALUE
+)
+
 # The gender model architecture
 # https://drive.google.com/open?id=1W_moLzMlGiELyPxWiYQJ9KFaXroQ_NFQ
 GENDER_MODEL = 'weights/deploy_gender.prototxt'
@@ -106,6 +116,46 @@ def image_resize(image, width=None, height=None, inter=cv2.INTER_AREA):
     return cv2.resize(image, dim, interpolation=inter)
 
 
+def process_images(images_path: str, use_detector: bool, confidence_threshold: float) -> int:
+    """
+    Process all images from folder and return the count of detected beards.
+
+    :param images_path: path to folder with images.
+    :param use_detector: if False, then don't use the face detector and classify the whole image.
+    :param confidence_threshold: threshold for considering a prediction as valid.
+    :return: The count of detected beards.
+    """
+
+    detector = SimpleFaceDetector(CASCADE_FILE_PATH, SCALE_FACTOR, MIN_NEIGHBOURS)
+    classifier = HatBeardClassifier(CLASSIFIER_MODEL_PATH, INPUT_SHAPE)
+
+    beard_count = 0  # Initialize the beard count
+
+    images_paths = [os.path.join(images_path, p) for p in os.listdir(images_path)]
+    for img_path in images_paths:
+        image = cv2.imread(img_path)
+        if image is None:
+            print('Can\'t read image: "{}".'.format(img_path))
+            continue
+        if use_detector:
+            faces = detector.inference(image)
+            for face_coordinates in faces:
+                x, y, w, h = get_coordinates(image, face_coordinates, COORDINATES_EXTEND_VALUE)
+                class_result = classifier.inference(image[y:y + h, x:x + w, :])
+                if class_result == 1 and classifier.get_confidence() > confidence_threshold:
+                    print("1")
+                    beard_count += 1  # Increment the beard count
+        else:
+            class_result = classifier.inference(image)
+            if class_result == 1 and classifier.get_confidence() > confidence_threshold:
+                print("1")
+                beard_count += 1  # Increment the beard count
+
+    return beard_count  # Return the total count of detected beards
+
+
+
+
 def get_image_paths(input_folder):
     image_files = [f for f in os.listdir(input_folder) if f.endswith('.png')]
     image_paths = [os.path.join(input_folder, f) for f in image_files]
@@ -133,6 +183,7 @@ def find_matching_strings(input_list):
 
     return male_matches, female_matches
 
+
 def get_clusters(base_folder):
     import re
     folder_names = [f for f in os.listdir(base_folder) if os.path.isdir(os.path.join(base_folder, f))]
@@ -150,12 +201,13 @@ def predict_gender(input_path: str):
 
         for nr, cluster in enumerate(face_clusters):
 
-            input_folder = str(script_directory) +"\\" +str(cluster)
+            input_folder = str(script_directory) + "\\" + str(cluster)
             print(input_folder)
             image_file_paths = get_image_paths(input_folder)
 
             gender_confidence_list = []
 
+            beard_counter = 0
 
             for l, file_path in enumerate(image_file_paths):
                 """Predict the gender of the faces showing in the image"""
@@ -218,6 +270,17 @@ def predict_gender(input_path: str):
                 total_male_percentage = sum(male_matches)
                 total_female_percentage = sum(female_matches)
 
+                # Set your hardcoded paths here
+
+                parent_path = os.path.dirname(file_path)
+
+                images_path = parent_path
+
+                confidence_threshold = 0.5  # Adjust the confidence threshold as needed
+
+                x = process_images(images_path, use_detector=True, confidence_threshold=confidence_threshold)
+                beard_counter = beard_counter + x
+
             total_width = 0
             total_height = 0
             total_size = 0
@@ -238,7 +301,6 @@ def predict_gender(input_path: str):
             avg_height = total_height / num_images
             avg_size_kb = total_size / num_images
 
-
             file.write(str(cluster))
 
             if total_male_percentage == 0 and total_female_percentage == 0:
@@ -246,20 +308,23 @@ def predict_gender(input_path: str):
             else:
                 if total_male_percentage > total_female_percentage:
                     if len(male_matches) > 0:
-                        file.write(": Male " + str(round(total_male_percentage / len(male_matches), 2)) +"%")
+                        file.write(": Male " + str(round(total_male_percentage / len(male_matches), 2)) + "%")
                     file.write(
-                        " with " + str(len(male_matches)) + " matches out of: " + str(len(gender_confidence_list)) + " pictures.")
+                        " with " + str(len(male_matches)) + " matches out of: " + str(
+                            len(gender_confidence_list)) + " pictures.")
 
                 else:
                     if len(female_matches) > 0:
-                        file.write(": Female " + str(round(total_female_percentage / len(female_matches), 2)) +"%")
+                        file.write(": Female " + str(round(total_female_percentage / len(female_matches), 2)) + "%")
                     file.write(" with " + str(len(female_matches)) + " matches out of: " + str(
                         len(gender_confidence_list)) + " pictures.")
 
                 file.write("Dimension: " + str(round(avg_width, 2)) + "x" + str(round(avg_height, 2)) + " Size: " + str(
-                    round(avg_size_kb, 2)) + "\n")
+                    round(avg_size_kb, 2)))
 
-
+            print(beard_counter)
+            file.write(" Beard detected in: " + str(beard_counter) + " photos from " + str(
+                len(gender_confidence_list)) + "\n")
 
             # print(str(gender_confidence_list) +'\n')
             # print(str(total_male_percentage) +"\n")
@@ -267,9 +332,6 @@ def predict_gender(input_path: str):
 
 
 if __name__ == '__main__':
-    # Parsing command line arguments entered by user
-    import sys
-
     current_script_path = os.path.abspath(__file__)
     script_directory = os.path.dirname(current_script_path)
 
