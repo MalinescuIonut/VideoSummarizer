@@ -11,6 +11,5 @@ Contents:
 7. Movie summarizer with selective acceleration => the last version pushed is compatible with subtitles if the user provides an srt subtitle file
 
 To be expected in the near future: 
-Movie summarizer with selective acceleration  -> the subtitles will be synchronized for both methods (ina and srt)t
-                                              
+Movie summarizer with selective acceleration  -> the subtitles will be synchronized for both methods (ina and srt)
                                               -> a new method to be implemented, by combining the benefits of both current options
